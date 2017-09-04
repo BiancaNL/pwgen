@@ -9,10 +9,6 @@ A simple and fast javascript-based password generator
 - add / remove ui elements with keywords
 - 'readable' option (remove all special characters)
 
-## planned features
-- show_hint (Toggle visibility of hint modal)
-- show_copy (Toggle if 'copy to clipboard' is displayed)
-
 ## usage
 ### script
 - Add the latest jQuery via Google Hosted Libraries to your project head
@@ -86,6 +82,33 @@ Toggles if the 'readable' checkbox is displayed.
 TypeError results in 'readable' = false
 ```javascript
 'readable': true
+supported values: true / false (boolean)
+default: false
+```
+
+### show_hint
+Toggles if the hint box is displayed
+TypeError results in 'show_hint' = true
+```javascript
+'show_hint': true
+supported values: true / false (boolean)
+default: true
+```
+
+### show_copy
+Toggles if 'copy to clipboard' is displayed
+TypeError results in 'show_copy' = true
+```javascript
+'show_copy': true
+supported values: true / false (boolean)
+default: true
+```
+
+### show_debug
+Toggles if debug switch is displayed
+TypeError results in 'show_debug' = false
+```javascript
+'show_debug': true
 supported values: true / false (boolean)
 default: false
 ```
