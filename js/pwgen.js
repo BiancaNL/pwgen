@@ -52,19 +52,31 @@
                 <button id='genIt' class='pwgen-button'>gen it!</button>\
                 <p>password:</p>\
                 <input type='text' id='pw' class='pwgen-input' />\
-                <span class='pwgen-copy'>copy to clipboard</span>\
-                <p class='tools'>debug:</p>\
-                <div class='pwgen-debug'>\
-                    <input type='checkbox' name='debug' class='debug-checkbox' id='debug'>\
-                    <label class='debug-label' for='debug'></label>\
-                </div>\
             ");
 
-            $('body').append("\
-                <div class='pwgen-hint'>\
-                    <p></p>\
-                </div>\
-            ");
+            if(args.show_copy) {
+                $(element).append("\
+                    <span class='pwgen-copy'>copy to clipboard</span>\
+                ");
+            }
+
+            if(args.show_debug) {
+                $(element).append("\
+                    <p class='tools'>debug:</p>\
+                    <div class='pwgen-debug'>\
+                        <input type='checkbox' name='debug' class='debug-checkbox' id='debug'>\
+                        <label class='debug-label' for='debug'></label>\
+                    </div>\
+                ");
+            }
+
+            if(args.show_hint) {
+                $('body').append("\
+                    <div class='pwgen-hint'>\
+                        <p></p>\
+                    </div>\
+                ");
+            }
 
             initPwgen(args);
         }
@@ -135,7 +147,7 @@
 
                             // make readable
                             if($('.pwgen-checkbox').is(":checked")) {
-                                if(!/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?@]/g.test(alphabet[chooseAlphabet])) {
+                                if(!/[~`!#$%\^&*+=\-_\[\]\\';,/{}|\\":<>\?@]/g.test(alphabet[chooseAlphabet])) {
                                     pw += alphabet[chooseAlphabet];
                                     i++;
                                 }
@@ -187,19 +199,22 @@
             copyTextareaBtn.addEventListener('click', function(event) {
                 var copyTextarea = document.querySelector('#pw');
                 copyTextarea.select();
-
-                try {
-                    var successful = document.execCommand('copy');
-                    var msg = successful ? 'successful' : 'unsuccessful';
-                    if ($('.debug-checkbox').is(":checked")) {
-                        console.log('Copying text command was ' + msg);
+                if($('#pw').val().length > 0) {
+                    try {
+                        var successful = document.execCommand('copy');
+                        var msg = successful ? 'successful' : 'unsuccessful';
+                        if ($('.debug-checkbox').is(":checked")) {
+                            console.log('Copying text command was ' + msg);
+                        }
+                        showHint('Copied!');
+                    } catch (err) {
+                        if ($('.debug-checkbox').is(":checked")) {
+                            console.log('Copying text command was ' + msg);
+                        }
+                        showHint('Failed :(');
                     }
-                    showHint('Copied!');
-                } catch (err) {
-                    if ($('.debug-checkbox').is(":checked")) {
-                        console.log('Copying text command was ' + msg);
-                    }
-                    showHint('Failed :(');
+                } else {
+                    showHint('Nothing to copy :/');
                 }
             });
         }
@@ -226,44 +241,54 @@
             if(typeof args.include_field === 'undefined')
                 args.include_field = true;
 
-            if(typeof args.length_field=== 'undefined')
+            if(typeof args.length_field === 'undefined')
                 args.length_field = true;
 
-            if(typeof args.readable=== 'undefined')
+            if(typeof args.readable === 'undefined')
                 args.readable = false;
 
+            if(typeof args.show_hint === 'undefined')
+                args.show_hint = true;
+
+            if(typeof args.show_copy === 'undefined')
+                args.show_copy = true;
+
+            if(typeof args.show_debug === 'undefined')
+                args.show_debug = false;
+
             // further validation / type check
-            if(typeof args.responsive !== 'boolean') {
+            if(typeof args.responsive !== 'boolean')
                 throwNewError('args.responsive', 'only supports type', 'boolean', args, true);
-            }
 
-            if(typeof args.min_length !== 'number') {
+            if(typeof args.min_length !== 'number')
                 throwNewError('args.min_length', 'only supports type', 'number', args, 6);
-            }
 
-            if(typeof args.max_length !== 'number') {
+            if(typeof args.max_length !== 'number')
                 throwNewError('args.max_length', 'only supports type', 'number', args, 12);
-            }
 
-            if(typeof args.include_append !== 'string') {
+            if(typeof args.include_append !== 'string')
                 throwNewError('args.include_append', 'only supports type', 'string', args, 'right');
-            }
 
-            if(typeof args.include !== 'string') {
+            if(typeof args.include !== 'string')
                 throwNewError('args.include', 'only supports type', 'string', args, '');
-            }
 
-            if(typeof args.include_field !== 'boolean') {
+            if(typeof args.include_field !== 'boolean')
                 throwNewError('args.include_field', 'only supports type', 'boolean', args, false);
-            }
 
-            if(typeof args.length_field !== 'boolean') {
+            if(typeof args.length_field !== 'boolean')
                 throwNewError('args.length_field', 'only supports type', 'boolean', args, false);
-            }
 
-            if(typeof args.readable !== 'boolean') {
+            if(typeof args.readable !== 'boolean')
                 throwNewError('args.readable', 'only supports type', 'boolean', args, false);
-            }
+
+            if(typeof args.show_hint !== 'boolean')
+                throwNewError('args.show_hint', 'only supports type', 'boolean', args, true);
+
+            if(typeof args.show_copy !== 'boolean')
+                throwNewError('args.show_copy', 'only supports type', 'boolean', args, true);
+
+            if(typeof args.show_debug !== 'boolean')
+                throwNewError('args.show_debug', 'only supports type', 'boolean', args, false);
 
             return args;
         }
@@ -275,7 +300,7 @@
               .queue(function (next) {
                 $(this).css({"opacity":"0", "z-index":"-1"});
                 next();
-              });
+            });
         }
 
         // function used to throw new TypeErrors with name = varibale name, msg = message to display, var_type = supported type, args = arguments, default_val = default value
