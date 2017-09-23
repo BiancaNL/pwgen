@@ -16,7 +16,7 @@ A simple and fast javascript-based password generator
 ```html
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/pwgen.js"></script>
+  <script src="path/to/pwgen.js"></script>
 </head>
 ```
 Add this at the end of your file:
@@ -32,7 +32,7 @@ Add this at the end of your file:
 
 ```html
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="path/to/style.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
