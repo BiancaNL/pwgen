@@ -51,7 +51,7 @@ Supported keywords:
 ## style
 ### responsive
 Toggles if the container uses responsive design.
-TypeError results in 'responsive' = true
+TypeError results in `'responsive' = true`
 ```javascript
 'responsive': true
 supported values: true / false (boolean)
@@ -61,6 +61,8 @@ default: true
 ### length_field
 Toggles if the length input field is displayed.
 TypeError results in 'length_field' = false
+
+If the length input field isn't displayed (`'length_field' = false`) the script uses a length between `max_length` and `min_length`
 ```javascript
 'length_field': true
 supported values: true / false (boolean)
