@@ -60,7 +60,7 @@ default: true
 
 ### length_field
 Toggles if the length input field is displayed.
-TypeError results in 'length_field' = false
+TypeError results in `'length_field' = false`
 
 If the length input field isn't displayed (`'length_field' = false`) the script uses a length between `max_length` and `min_length`
 ```javascript
@@ -71,7 +71,7 @@ default: true
 
 ### include_field
 Toggles if the inlude input field is displayed.
-TypeError results in 'include_field' = false
+TypeError results in `'include_field' = false`
 ```javascript
 'include_field': true
 supported values: true / false (boolean)
@@ -80,7 +80,7 @@ default: true
 
 ### readable
 Toggles if the 'readable' checkbox is displayed.
-TypeError results in 'readable' = false
+TypeError results in `'readable' = false`
 ```javascript
 'readable': true
 supported values: true / false (boolean)
@@ -89,7 +89,7 @@ default: false
 
 ### show_hint
 Toggles if the hint box is displayed
-TypeError results in 'show_hint' = true
+TypeError results in `'show_hint' = true`
 ```javascript
 'show_hint': true
 supported values: true / false (boolean)
@@ -98,7 +98,7 @@ default: true
 
 ### show_copy
 Toggles if 'copy to clipboard' is displayed
-TypeError results in 'show_copy' = true
+TypeError results in `'show_copy' = true`
 ```javascript
 'show_copy': true
 supported values: true / false (boolean)
@@ -107,7 +107,7 @@ default: true
 
 ### show_debug
 Toggles if debug switch is displayed
-TypeError results in 'show_debug' = false
+TypeError results in `'show_debug' = false`
 ```javascript
 'show_debug': true
 supported values: true / false (boolean)
@@ -117,7 +117,7 @@ default: false
 ## behavior
 ### min_length
 Set the minimum length of the password.
-TypeError results in 'min_length' = 6
+TypeError results in `'min_length' = 6`
 ```javascript
 'min_length': 6
 supported values: numeric
@@ -126,7 +126,7 @@ default: 6
 
 ### max_length
 Set the maximum length of the password.
-TypeError results in 'max_length' = 12
+TypeError results in `'max_length' = 12`
 ```javascript
 'max_length': 12
 supported values: numeric
@@ -135,7 +135,7 @@ default: 12
 
 ### include
 Set an include string to be included in every generated password.
-TypeError results in 'include' = ''
+TypeError results in `'include' = ''`
 ```javascript
 'include': 'foo'
 supported values: string
@@ -144,7 +144,7 @@ default: ''
 
 ### include_append
 Where to append 'include' to user-entered include string.
-TypeError results in 'include_append' = 'right'
+TypeError results in `'include_append' = 'right'`
 ```javascript
 'include_append': 'right'
 supported values: 'right' / 'left'
