@@ -17,7 +17,6 @@ A simple and fast javascript-based password generator
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/pwgen.js"></script>
-  <script src="js/sha1.min.js"></script>
 </head>
 ```
 Add this at the end of your file:
