@@ -9,6 +9,9 @@ A simple and fast javascript-based password generator
 - add / remove ui elements with keywords
 - 'readable' option (remove all special characters)
 
+## planned features
+- abstract certain characters (e.g. 1 -> ! or A -> 4)
+
 ## usage
 ### script
 - Add the latest jQuery via Google Hosted Libraries to your project head
